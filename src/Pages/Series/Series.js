@@ -50,12 +50,14 @@ useEffect(() =>{
               poster={c.poster_path}
               title={c.title || c.name}
               date={c.first_air_date || c.release_date}
-              media_type={c.media_type}
+              media_type="tv"
               vote_average={c.vote_average}
             />
           ))}
       </div>
-      <CustomPagination setPage={setPage} numOfPages={numOfPages}/>
+      {numOfPages > 1 && (
+        <CustomPagination setPage={setPage} numOfPages={numOfPages} />
+      )}
     </div>
   )
 }

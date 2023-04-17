@@ -1,4 +1,3 @@
-import React from 'react';
 import { useEffect,useState } from 'react';
 import Genres from "../../components/Genres/Genres";
 import SingleContent from '../../components/SingleContent/SingleContent';
@@ -35,6 +34,7 @@ const Movies = () => {
     <h1 className='text-2xl font-serif text-white p-28 pb-5 max-sm:p-20 max-sm:text-lg text-center uppercase space-x-1 max-sm:pb-4'>Discover  Movies</h1>
     <Genres
     type="movie"
+    className="text-black"
     selectedGenres={selectedGenres}
     setSelectedGenres={setSelectedGenres}
     genres={genres}
@@ -50,12 +50,14 @@ const Movies = () => {
               poster={c.poster_path}
               title={c.title || c.name}
               date={c.first_air_date || c.release_date}
-              media_type={c.media_type}
+              media_type="movie"
               vote_average={c.vote_average}
             />
           ))}
       </div>
-      <CustomPagination setPage={setPage} numOfPages={numOfPages}/>
+      {numOfPages > 1 && (
+        <CustomPagination setPage={setPage} numOfPages={numOfPages} />
+      )}
     </div>
     
   )
